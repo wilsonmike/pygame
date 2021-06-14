@@ -14,14 +14,22 @@ class AlienInvasion:
     
     def run_game(self):
         while True:
-            for event in pygame.event.get():
+            self._check_events()
+            self._update_screen()
+            
+            
+
+    def _check_events(self):
+         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
-            
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blitme()      
-            pygame.display.flip()
-            
+                    
+    def _update_screen(self):
+        self.screen.fill(self.settings.bg_color)
+        self.ship.blitme()      
+        pygame.display.flip()
+        
+
 if __name__ == '__main__':
     ai = AlienInvasion()
     ai.run_game()
