@@ -5,6 +5,7 @@ import pygame
 
 class AlienInvasion:
     def __init__(self):
+        # to run in fullscreen mode see 283 self.screen adjustments
         pygame.init()
         self.settings = Settings()
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
