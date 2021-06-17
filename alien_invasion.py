@@ -83,6 +83,11 @@ class AlienInvasion:
     
     def _ship_hit(self):
         self.stats.ships_left -= 1
+        self.aliens.empty()
+        self.bullets.empty()
+        self._create_fleet()
+        self.ship.center_ship()
+        sleep(0.5)
         # pg 313
 
     def _create_alien(self, alien_number, row_number):
@@ -97,7 +102,7 @@ class AlienInvasion:
         self._check_fleet_edges()
         self.aliens.update()
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
-            print("Ship hit!!")
+            self._ship_hit()
 
     def _fire_bullet(self):
         if len(self.bullets) < self.settings.bullets_allowed:
