@@ -122,6 +122,9 @@ class AlienInvasion:
         if not self.aliens:
             self.bullets.empty()
             self._create_fleet()
+
+    def _check_aliens_bottom(self):
+        # page 314
                     
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)
