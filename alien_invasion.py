@@ -88,7 +88,6 @@ class AlienInvasion:
         self._create_fleet()
         self.ship.center_ship()
         sleep(0.5)
-        # pg 313
 
     def _create_alien(self, alien_number, row_number):
         alien = Alien(self)
@@ -103,6 +102,7 @@ class AlienInvasion:
         self.aliens.update()
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             self._ship_hit()
+        self._check_aliens_bottom()
 
     def _fire_bullet(self):
         if len(self.bullets) < self.settings.bullets_allowed:
@@ -124,7 +124,11 @@ class AlienInvasion:
             self._create_fleet()
 
     def _check_aliens_bottom(self):
-        # page 314
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                self._ship_hit()
+                break
                     
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)
